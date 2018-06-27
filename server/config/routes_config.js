@@ -1,11 +1,19 @@
-const pet = require('../controllers/controller.js')
+const user = require('../controllers/controller.js')
 
 module.exports = function(app){
-    app.post('/register', pet.register)
-    app.post('/addPet', pet.add)
-    app.get('/all', pet.getPet)
-    app.delete('/delete/:id', pet.deletePet)
-    app.put('/edit/:id', pet.updatePet)
-    app.get('/show/:id', pet.showPet)
-    app.post('/like/:id', pet.like)
+    app.post('/register', user.register)
+    app.post('/login', user.login)
+    app.get('/logout', user.logout)
+    app.post('/addDish', user.add)
+    app.get('/showDish', user.showDish)
+    app.get('/dishes', user.dishes)
+    app.get('/getOneDish/:id', user.getOneDish)
+
+
+    
+    // app.get('/all', user.getPet)
+    app.delete('/delete/:id', user.deletePet)
+    app.put('/edit/:id', user.updatePet)
+    app.get('/show/:id', user.showPet)
+    app.post('/like/:id', user.like)
 }

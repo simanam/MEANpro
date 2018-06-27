@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const FoodSchema = require('./foodModel');
-const bcrypt = require('bcrypt');
 var UserSchema = new mongoose.Schema({
     fname: {
         type: String, 
@@ -19,17 +18,15 @@ var UserSchema = new mongoose.Schema({
     },
     password: { 
         type: String, 
-        required: [true, "Password must be at least 4 characters."], 
+        required: [true, "Password is required."], 
         minlength: [4, "Password must be at least 4 characters"],
     },
-    specialty: {
+    spec: {
         type: String, 
-        required: [true, "Type is required."], 
-        minlength: [3, "Type must be at least 3 characters."]
+        required: [true, "Specialty is required."], 
+        minlength: [3, "Specialty must be at least 3 characters."]
     },
-    food: {
-        FoodSchema,
-    }
+    food: [FoodSchema]
 }, {timestamps: true})
 
 mongoose.model('User', UserSchema)

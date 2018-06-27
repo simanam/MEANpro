@@ -9,6 +9,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   pets: any;
+  foods: any;
 
   constructor(
     private _taskService: TasksService,
@@ -17,21 +18,18 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.showDishes()
     // this._route.params.subscribe((params: Params) => console.log(params['id']));
-    this.showPets();
   }
 
-  showPets() {
-    let showObservable = this._taskService.getPet();
-    showObservable.subscribe(res => {
-      this.pets = res['data'];
-      console.log(this.pets)
+  showDishes() {
+    this._taskService.dishes().subscribe(res => {
+      this.foods = res['data'];
+      console.log(this.foods)
     })
   }
-  detail(id){
-    this._router.navigate(['/pets/', id])
-  }
-  edit(id){
-    this._router.navigate(['/pets/' + id + '/edit'])
+
+  showDetail(id){
+    this._router.navigate(['/food/', id])
   }
 }

@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 // import { EditAuthorComponent } from './edit-author/edit-author.component';
 import { NewComponent } from './new/new.component';
 import { DetailComponent } from './detail/detail.component';
-import { EditComponent } from './edit/edit.component';
+import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
 @NgModule({
@@ -24,7 +24,7 @@ import { LoginComponent } from './login/login.component';
     // EditAuthorComponent,
     NewComponent,
     DetailComponent,
-    EditComponent,
+    RegisterComponent,
     LoginComponent
   ],
   imports: [

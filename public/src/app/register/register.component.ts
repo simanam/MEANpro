@@ -2,16 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { TasksService } from '../tasks.service';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-const session = require('express-session');
+// const session = require('express-session');
 
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  id: any;
-  pet: any;
+  regform: any;
+  user: any;
+  msg: any;
+  invalid: any;
 
   constructor(
     private _taskService: TasksService,
@@ -20,14 +22,17 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._route.params.forEach((params: Params) => {
-      this.id = params['id'];
-    });
   }
-  register(form:NgForm){
-    this._taskService.register(form).subscribe(res => {
-      this.pet = res['data'];
+  register(regform:NgForm){
+    console.log(regform.value)
+    this._taskService.register(regform.value).subscribe(res => {
       console.log("show", res)
+      if(res['Status'] == true){
+        this._router.navigate(['/new/' + res['user']['fname']]);
+      } else {
+        this.invalid = res['err']
+        this.msg = res['Error']
+      }
     })
   }
 }

@@ -7,12 +7,12 @@ import { DetailComponent } from './detail/detail.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-    {path: '', component:HomeComponent},
+    {path: 'home', component:HomeComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'login/:id', component: LoginComponent},
-    {path: 'new/:id', component:NewComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'new/:name', component:NewComponent},
     {path: 'food/:id', component: DetailComponent},
-    { path: '', pathMatch: 'full', redirectTo: '' }
+    { path: '', pathMatch: 'full', redirectTo: '/home' }
 ];
 
 @NgModule({

@@ -12,6 +12,8 @@ export class NewComponent implements OnInit {
   newPet: any;
   msg: any;
   exist: any;
+  foods: any;
+ 
 
   constructor(
     private _taskService: TasksService,
@@ -21,24 +23,36 @@ export class NewComponent implements OnInit {
 
   ngOnInit() {
     this.msg = false;
-    this.exist = false;
-
+    this.showDish();
   }
 
-  addNew(newPet:NgForm){
-    console.log(newPet.value)
-    let Obs = this._taskService.addPet(newPet.value);
-    Obs.subscribe(data => {
+  logout(){
+    this._taskService.logout().subscribe(res => {
+      if(res['Login'] == false){
+        this._router.navigate(['/']);
+      }
+    })
+  }
+
+  addNew(newDish:NgForm){
+    console.log(newDish.value)
+    this._taskService.addDish(newDish.value).subscribe(data => {
       if (data['Status'] == true){
         console.log(data['Status'])
         console.log("successfully added", data)
-        this._router.navigate(['/pets']);
-        newPet.reset();
+        newDish.reset();
+        this.showDish();
       } else {
         console.log(data)
-        this.exist = data['err']
         this.msg = data['Error']
-      } 
+      }
+    })
+  }
+
+  showDish(){
+    this._taskService.showDish().subscribe(data => {
+      this.foods = data['food']
+      console.log("success", data)
     })
   }
 }

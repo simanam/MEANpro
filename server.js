@@ -1,6 +1,14 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+const session = require('express-session');
+app.use(session({
+    secret: 'keyboardkitteh',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 }
+  }))
+
 var bodyParser = require('body-parser')
 
 app.use(bodyParser.json())

@@ -1,11 +1,12 @@
 <html>
-    <a href='/register'>Become A Cook!</a> //rigth side of the page
-    <form (submit)="/search" method='post'>
-        <input type="text" name="searchBar"><input type="submit">
-    </form>
-
-    <div>
-        <img src='/' alt='food'>
+<div *ngFor="let food of foods">
+    <div (click)="showDetail(food._id)" style="border: 1px solid salmon; width: 600px">
+        <p>Dish name: {{food.dish}}</p>
+        <img [src]="food.pic" alt="food" width=350, height=250>
+        <p> Price: {{food.price}}</p>
+        <p>Quantity: {{food.quan}}</p>
+        <p>Description: {{food.desc}}</p>
+        <p>Expiration Date: {{food.exp}}</p>
     </div>
-    
+</div>
 </html>

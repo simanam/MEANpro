@@ -1,10 +1,18 @@
 <html>
-    <form (submit)="register(form)" #form="ngForm">
+    <div *ngIf="msg" style="color: red">
+        <p *ngIf="msg.errors.fname">{{msg.errors.fname.message}}</p>
+        <p *ngIf="msg.errors.lname">{{msg.errors.lname.message}}</p>
+        <p *ngIf="msg.errors.email">{{msg.errors.email.message}}</p>
+        <p *ngIf="msg.errors.password">{{msg.errors.password.message}}</p>
+        <p *ngIf="msg.errors.spec">{{msg.errors.spec.message}}</p>
+    </div>
+    <p *ngIf="invalid" style="color: red">{{invalid}}</p>
+    <form (submit)="register(regform)" #regform="ngForm">
         First Name: <input type="text" name="fname" ngModel>
         Last Name: <input type="text" name="lname" ngModel>
         Email: <input type="email" name="email" ngModel>
         Password: <input type="password" name="password" ngModel>
         Specialty: <input type="text" name="spec" ngModel>
-        <input type="submit" value-"submit">
+        <input type="submit" value="submit">
     </form>  
 </html>
