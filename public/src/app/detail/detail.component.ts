@@ -25,12 +25,17 @@ export class DetailComponent implements OnInit {
      this.showDetail();
   }
 
-showDetail(){
-  console.log(this.id)
-  this._taskService.getOneDish(this.id).subscribe(res => {
+  showDetail(){
+    console.log(this.id)
+    this._taskService.getOneDish(this.id).subscribe(res => {
       this.food = res['data'];
       console.log("show", res)
     })
+
+  }
+  chatClicked(cook){
+    this._router.navigate(['/chat/', cook._id])
+
   }
 
 //   adopt(id){

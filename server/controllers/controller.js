@@ -24,7 +24,7 @@ module.exports = {
                             if (err) {
                                 res.json({ Status: false, Error: err })
                             } else {
-                                req.session.id = user._id
+                                req.session.user = { id: user._id }
                                 res.json({ Status: true, user: user, Login: true })
                             }
                         })
@@ -63,13 +63,15 @@ module.exports = {
     add: function (req, res) {
         console.log(req.body)
         var food = new Food(req.body)
+        var userId = req.session.user.id
+        food.cook = userId
         food.save(function (err, dish) {
             if (err) {
                 console.log('somethig went worng');
                 res.json({ Status: false, Error: err })
             } else {
                 console.log('successfully added a user');
-                console.log(req.session.user)
+                console.log(req.session.user.id)
                 User.findByIdAndUpdate({ _id: req.session.user.id }, { $push: { food: dish } }, function (err, user) {
                     if (err) {
                         console.log('somethig went worng');
@@ -110,8 +112,8 @@ module.exports = {
         })
     },
     getOneDish: function(req, res){
-        console.log(req.params.id)
-        Food.findOne({ _id: req.params.id}, function (err, food) {
+        
+        Food.findOne({ _id: req.params.id}).populate('cook').exec(function (err, food) {
             if (err) {
                 console.log('somethig went worng');
                 res.json({ message: "Error", error: err })

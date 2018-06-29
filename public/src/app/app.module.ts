@@ -14,6 +14,7 @@ import { NewComponent } from './new/new.component';
 import { DetailComponent } from './detail/detail.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { ChatroomComponent } from './chatroom/chatroom.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { LoginComponent } from './login/login.component';
     NewComponent,
     DetailComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ChatroomComponent
   ],
   imports: [
     BrowserModule,

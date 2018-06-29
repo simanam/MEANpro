@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const UserSchema = require('./userModel')
 var FoodSchema = new mongoose.Schema({
     dish: {
         type: String, 
@@ -38,4 +39,4 @@ var FoodSchema = new mongoose.Schema({
     },
 }, {timestamps: true})
 
-mongoose.model('Food', FoodSchema)
+module.exports = mongoose.model('Food', FoodSchema)

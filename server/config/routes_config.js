@@ -12,8 +12,8 @@ module.exports = function(app){
 
     
     // app.get('/all', user.getPet)
-    app.delete('/delete/:id', user.deletePet)
-    app.put('/edit/:id', user.updatePet)
-    app.get('/show/:id', user.showPet)
-    app.post('/like/:id', user.like)
+    // app.delete('/delete/:id', user.deletePet)
+    // app.put('/edit/:id', user.updatePet)
+    // app.get('/show/:id', user.showPet)
+    // app.post('/like/:id', user.like)
 }

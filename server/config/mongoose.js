@@ -4,7 +4,7 @@ var fs = require('fs')
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/cake_data');
+mongoose.connect('mongodb://localhost/tds_data');
 
 var models_path = path.join(__dirname, './../models');
 // read all of the files in the models_path and require (run) each of the javascript files
