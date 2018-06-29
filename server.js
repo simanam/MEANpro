@@ -1,3 +1,5 @@
+
+
 var express = require('express');
 var app = express();
 var path = require('path');
@@ -31,4 +33,10 @@ const server = app.listen(8000, function(){
     console.log("listening on port 8000")
       });
 const io = require('socket.io')(server);
+io.on('connection', (socket) => {
+  socket.emit('hello', {
+    greeting: 'hello Aman'
+  })
+
+})
 

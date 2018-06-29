@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {TasksService} from './tasks.service'
+import {TasksService} from './tasks.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import * as socketIo from 'socket.io-client';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,9 @@ export class AppComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router){ }
   ngOnInit(){
+    const socket =  socketIo('http://localhost:8000');
+
+    socket.on('hello', (data) => console.log(data));
    
   }
   
